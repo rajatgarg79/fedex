@@ -134,6 +134,9 @@ module Fedex
             add_requested_shipment(xml)
           }
         end
+        puts "#############################################################################"
+        raise "#{builder.doc.root.to_xml}"
+        puts "#############################################################################"
         builder.doc.root.to_xml
       end
 
