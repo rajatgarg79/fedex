@@ -108,14 +108,10 @@ module Fedex
 
       # Callback used after a failed shipment response.
       def failure_response(api_response, response)
-        puts "#############################################################################"
-        puts "#{api_response.inspect}"
-        puts "#############################################################################"
+      	puts "#############################################################################"
         puts "#{response.inspect}"
         puts "#############################################################################"
-        puts "#{response[:envelope][:body][:process_shipment_reply].inspect}"
-        puts "#############################################################################"
-
+        
         error_message = if response[:process_shipment_reply]
           [response[:process_shipment_reply][:notifications]].flatten.first[:message]
         else
