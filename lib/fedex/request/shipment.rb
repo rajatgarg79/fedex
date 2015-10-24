@@ -138,7 +138,7 @@ module Fedex
         puts "#{builder.doc.root.to_xml}"
         puts "#############################################################################"
         #builder.doc.root.to_xml
-        "<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v13="http://fedex.com/ws/ship/v13">
+        "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:v13=\"http://fedex.com/ws/ship/v13\">
    		<soapenv:Header/>
    		<soapenv:Body>
         		<v13:ProcessShipmentRequest>
