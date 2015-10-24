@@ -209,9 +209,9 @@ module Fedex
             if @mps.has_key? :sequence_number
               xml.SequenceNumber @mps[:sequence_number]
             else
-              xml.GroupPackageCount 1
               xml.SequenceNumber 1
               xml.GroupNumber 1
+              xml.GroupPackageCount 1
             end
             if package[:insured_value]
               xml.InsuredValue{
