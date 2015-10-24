@@ -163,7 +163,7 @@ module Fedex
             				<v13:Minor>0</v13:Minor>
          			</v13:Version>
          			<v13:RequestedShipment>
-            				<v13:ShipTimestamp>2015-10-24T15:43:20</v13:ShipTimestamp>
+            				<v13:ShipTimestamp>2015-10-26T15:43:20</v13:ShipTimestamp>
             				<v13:DropoffType>REGULAR_PICKUP</v13:DropoffType>
             				<v13:ServiceType>STANDARD_OVERNIGHT</v13:ServiceType>
             				<v13:PackagingType>YOUR_PACKAGING</v13:PackagingType>
