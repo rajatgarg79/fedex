@@ -142,7 +142,9 @@ module Fedex
         puts "#{builder.doc.root.to_xml}"
         puts "#############################################################################"
         #builder.doc.root.to_xml
-        "<v13:ProcessShipmentRequest>
+        "<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v13="http://fedex.com/ws/ship/v13">
+   	<soapenv:Header/>
+   <soapenv:Body><v13:ProcessShipmentRequest>
          			<v13:WebAuthenticationDetail>
             				<v13:UserCredential>
                					<v13:Key>r50uWmpOG8Nc25pG</v13:Key>
@@ -302,7 +304,7 @@ module Fedex
                			</v13:CustomerReferences>
             		</v13:RequestedPackageLineItems>
          	</v13:RequestedShipment>
-      	</v13:ProcessShipmentRequest>"
+      	</v13:ProcessShipmentRequest></soapenv:Body></soapenv:Envelope>"
       end
 
       def service
