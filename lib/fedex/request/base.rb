@@ -12,7 +12,7 @@ module Fedex
       # If true the rate method will return the complete response from the Fedex Web Service
       attr_accessor :debug
       # Fedex Text URL
-      TEST_URL = "https://wsbeta.fedex.com:443/xml/"
+      TEST_URL = "https://wsbeta.fedex.com:443/web-services/"
 
       # Fedex Production URL
       PRODUCTION_URL = "https://ws.fedex.com:443/xml/"
