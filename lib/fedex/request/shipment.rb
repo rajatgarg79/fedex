@@ -110,6 +110,8 @@ module Fedex
         puts "#############################################################################"
         puts "#{api_response.inspect}"
         puts "#############################################################################"
+        puts "#{response.inspect}"
+        puts "#############################################################################"
 
         error_message = if response[:process_shipment_reply]
           [response[:process_shipment_reply][:notifications]].flatten.first[:message]
