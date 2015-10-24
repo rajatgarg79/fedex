@@ -112,7 +112,7 @@ module Fedex
         puts "#############################################################################"
         puts "#{response.inspect}"
         puts "#############################################################################"
-        puts "#{response[:process_shipment_reply].inspect}"
+        puts "#{response[:envelope][:body][:process_shipment_reply].inspect}"
         puts "#############################################################################"
 
         error_message = if response[:process_shipment_reply]
