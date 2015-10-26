@@ -139,6 +139,8 @@ module Fedex
         puts "#############################################################################"
         puts "XML BUILT HERE -> #{builder.doc.root.to_xml}"
         puts "#############################################################################"
+         return "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:v13=\"http://fedex.com/ws/ship/v13\">
+   	<soapenv:Header/><soapenv:Body>#{builder.doc.root.to_xml}</soapenv:Body></soapenv:Envelope>"
       end
 
       def service
