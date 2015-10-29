@@ -45,6 +45,9 @@ module Fedex
           }
         end
         builder.doc.root.to_xml
+        puts "#############################################"
+        puts builder.doc.root.to_xml
+        puts "#############################################"
       end
 
       def service
