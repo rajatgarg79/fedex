@@ -51,7 +51,6 @@ module Fedex
             "#{api_response["Fault"]["detail"]["fault"]["reason"]}\n--#{api_response["Fault"]["detail"]["fault"]["details"]["ValidationFailureDetail"]["message"].join("\n--")}"
           end rescue $1
           puts response.inspect
-          puts error_message
           raise RateError, error_message
         end
       end
@@ -61,7 +60,7 @@ module Fedex
       # Build xml Fedex Web Service request
       def build_xml
         builder = Nokogiri::XML::Builder.new do |xml|
-          xml.TrackRequest(:xmlns => "http://fedex.com/ws/track/v10"){
+          xml.TrackRequest(:xmlns => "http://fedex.com/ws/track/v#{service[:version]}"){
             add_web_authentication_detail(xml)
             add_client_detail(xml)
             add_version(xml)
@@ -71,8 +70,11 @@ module Fedex
             xml.PagingToken                    @paging_token if @paging_token
           }
         end
-        builder.doc.root.to_xml
-        return "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:v10=\"http://fedex.com/ws/track/v10\"><soapenv:Header/><soapenv:Body>#{builder.doc.root.to_xml}</soapenv:Body></soapenv:Envelope>"
+        puts "#############################################################################"
+        puts "XML BUILT HERE -> #{builder.doc.root.to_xml}"
+        puts "#############################################################################"
+         return "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:v13=\"http://fedex.com/ws/track/v13\">
+        <soapenv:Header/><soapenv:Body>#{builder.doc.root.to_xml}</soapenv:Body></soapenv:Envelope>"
       end
 
       def service
