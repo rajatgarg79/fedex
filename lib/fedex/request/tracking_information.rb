@@ -28,6 +28,11 @@ module Fedex
         api_response = self.class.post(api_url, :body => build_xml)
         puts api_response if @debug == true
         response = parse_response(api_response)
+        
+        puts response.inspect
+        puts "########################################################"
+        puts response
+        puts "########################################################"
 
         if success?(response)
           options = response[:track_reply][:track_details]
@@ -50,7 +55,7 @@ module Fedex
           else
             "#{api_response["Fault"]["detail"]["fault"]["reason"]}\n--#{api_response["Fault"]["detail"]["fault"]["details"]["ValidationFailureDetail"]["message"].join("\n--")}"
           end rescue $1
-          puts response.inspect
+          #puts response.inspect
           raise RateError, error_message
         end
       end
