@@ -61,7 +61,7 @@ module Fedex
       # Build xml Fedex Web Service request
       def build_xml
         builder = Nokogiri::XML::Builder.new do |xml|
-          xml.TrackRequest(:xmlns => "http://fedex.com/ws/track/v#{service[:version]}"){
+          xml.TrackRequest(:xmlns => "http://fedex.com/ws/track/v10"){
             add_web_authentication_detail(xml)
             add_client_detail(xml)
             add_version(xml)
@@ -72,7 +72,7 @@ module Fedex
           }
         end
         builder.doc.root.to_xml
-        return "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:v13=\"http://fedex.com/ws/track/v13\"><soapenv:Header/><soapenv:Body>#{builder.doc.root.to_xml}</soapenv:Body></soapenv:Envelope>"
+        return "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:v10=\"http://fedex.com/ws/track/v10\"><soapenv:Header/><soapenv:Body>#{builder.doc.root.to_xml}</soapenv:Body></soapenv:Envelope>"
       end
 
       def service
