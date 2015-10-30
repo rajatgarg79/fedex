@@ -28,12 +28,7 @@ module Fedex
         api_response = self.class.post(api_url, :body => build_xml)
         puts api_response if @debug == true
         response = parse_response(api_response)
-        
-        puts response.inspect
-        puts "########################################################"
-        puts response
-        puts "########################################################"
-
+        response = response[:envelope][:body]
         if success?(response)
           options = response[:track_reply][:track_details]
 
