@@ -50,6 +50,7 @@ module Fedex
           else
             "#{api_response["Fault"]["detail"]["fault"]["reason"]}\n--#{api_response["Fault"]["detail"]["fault"]["details"]["ValidationFailureDetail"]["message"].join("\n--")}"
           end rescue $1
+          puts response.inspect
           raise RateError, error_message
         end
       end
