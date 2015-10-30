@@ -44,10 +44,11 @@ module Fedex
             add_package_details(xml)
           }
         end
-        builder.doc.root.to_xml
         puts "#############################################"
         puts builder.doc.root.to_xml
         puts "#############################################"
+        return "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:v11=\"http://fedex.com/ws/pickup/v11\">
+        <soapenv:Header/><soapenv:Body>#{builder.doc.root.to_xml}</soapenv:Body></soapenv:Envelope>"
       end
 
       def service
