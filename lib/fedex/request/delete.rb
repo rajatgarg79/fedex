@@ -18,6 +18,9 @@ module Fedex
         api_response = self.class.post(api_url, :body => build_xml)
         puts api_response if @debug == true
         response = parse_response(api_response)
+        puts "$$$$$$$$$$$$$$$$$$$$$$$$$$"
+        puts response.inspect
+        puts "$$$$$$$$$$$$$$$$$$$$$$$$$$"
         response = response[:envelope][:body]
         unless success?(response)
           error_message = if response[:shipment_reply]
