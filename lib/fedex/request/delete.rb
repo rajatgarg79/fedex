@@ -46,6 +46,9 @@ module Fedex
             xml.DeletionControl @deletion_control
           }
         end
+        puts "#######################################"
+        puts "#{builder.doc.root.to_xml}"
+        puts "#######################################"
         return '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v17="http://fedex.com/ws/ship/v17">
 <soapenv:Header/><soapenv:Body>#{builder.doc.root.to_xml}</soapenv:Body></soapenv:Envelope>'
       end
