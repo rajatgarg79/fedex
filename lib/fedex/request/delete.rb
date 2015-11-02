@@ -18,9 +18,6 @@ module Fedex
         api_response = self.class.post(api_url, :body => build_xml)
         puts api_response if @debug == true
         response = parse_response(api_response)
-        puts "$$$$$$$$$$$$$$$$$$$$$$$$$$"
-        puts response.inspect
-        puts "$$$$$$$$$$$$$$$$$$$$$$$$$$"
         response = response[:envelope][:body]
         unless success?(response)
           error_message = if response[:shipment_reply]
@@ -49,9 +46,6 @@ module Fedex
             xml.DeletionControl @deletion_control
           }
         end
-        puts "#######################################"
-        puts "#{builder.doc.root.to_xml}"
-        puts "#######################################"
         return "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:v13=\"http://fedex.com/ws/ship/v13\">
         <soapenv:Header/><soapenv:Body>#{builder.doc.root.to_xml}</soapenv:Body></soapenv:Envelope>"
 
