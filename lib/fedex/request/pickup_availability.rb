@@ -22,6 +22,7 @@ module Fedex
         api_response = self.class.post(api_url, :body => build_xml)
         puts api_response if @debug == true
         response = parse_response(api_response)
+        response = response[:envelope][:body]
         if success?(response)
           success_response(api_response, response)
         else
@@ -43,7 +44,8 @@ module Fedex
             add_other_pickup_details(xml)
           }
         end
-        builder.doc.root.to_xml
+        return "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:v11=\"http://fedex.com/ws/pickup/v11\">
+        <soapenv:Header/><soapenv:Body>#{builder.doc.root.to_xml}</soapenv:Body></soapenv:Envelope>"
       end
 
       def service
