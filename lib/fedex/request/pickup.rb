@@ -27,6 +27,7 @@ module Fedex
         if success?(response)
           success_response(api_response, response)
         else
+          puts api_response.inspect
           failure_response(api_response, response)
         end
       end
